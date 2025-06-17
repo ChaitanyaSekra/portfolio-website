@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <title>Projects - Chaitanya Sekra</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="name-animation">Chaitanya Sekra</h1>
+            <p class="tagline">AI & ML Enthusiast | Web Developer | Tech Advocate</p>
+
+            <nav>
+                <a href="home.html" class="nav-link"><span>Home</span></a>
+                <a href="about.html" class="nav-link"><span>About Me</span></a>
+                <a href="experience.html" class="nav-link"><span>Experience</span></a>
+                <a href="skills.html" class="nav-link"><span>Skills</span></a>
+                <a href="certificates.html" class="nav-link"><span>Certificates</span></a>
+                <a href="https://drive.google.com/file/d/1avmjh6ZumXSvlA-6b9rTsn_QDQOMCYIr/view?usp=sharing"
+                    class="nav-link" target="_blank"><span>Resume</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <button class="project-btn" onclick="clickAnimation(this); openModal('project1')">
+                    <img src="images/tms.png" class="icon-img" alt="Traffic Icon"> Traffic Management System
+                </button>
+                <button class="project-btn" onclick="clickAnimation(this); openModal('project2')">
+                    <img src="images/mvr.png" class="icon-img" alt="Movie Icon"> Movie Recommender System
+                </button>
+                <button class="project-btn" onclick="clickAnimation(this); openModal('project3')">
+                    <img src="images/frdls.png" class="icon-img" alt="Lock Icon"> Face Recognition Door Lock
+                </button>
+                <button class="project-btn" onclick="clickAnimation(this); openModal('project4')">
+                    <img src="images/air_canvas.png" class="icon-img" alt="Canvas Icon"> Air Canvas
+                </button>
+
+            </div>
+
+            <!-- Modals -->
+            <div id="project1" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('project1')">&times;</span>
+                    <h3>Traffic Management System</h3>
+                    <p>An AI-based project that analyzes real-time traffic images to optimize traffic signals using
+                        vehicle detection via YOLOv8 and time calculations using Deep Q-Learning. Focused on improving
+                        urban traffic flow using Python and OpenCV.
+                    </p>
+                    <a href="https://github.com/darshita27-cmd/Traffic-Management-system-using-Deep-Q" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+
+            <div id="project2" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('project2')">&times;</span>
+                    <h3>Movie Recommender System</h3>
+                    <p>A FastAPI-based web application that recommends movies based on user ratings and content
+                        similarity using TF-IDF vectorization and cosine similarity.</p>
+                    <a href="https://github.com/ChaitanyaSekra/movie-recommender" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+
+            <div id="project3" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('project3')">&times;</span>
+                    <h3>Face Recognition Door Lock System</h3>
+                    <p>An AI-powered security system that uses facial recognition for contactless authentication and
+                        automated door access. Built with Python using the face_recognition and OpenCV libraries, this
+                        system identifies authorized individuals in real-time through a camera feed.</p>
+                    <a href="https://github.com/ChaitanyaSekra/face-recognition-door-lock-system" target="_blank">View
+                        on GitHub</a>
+                </div>
+            </div>
+
+            <div id="project4" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('project4')">&times;</span>
+                    <h3>Air Canvas</h3>
+                    <p>An interactive computer vision project that allows users to draw on the screen in real-time by
+                        moving their fingers in the air, without touching any surface. Built using Python and OpenCV,
+                        the system detects hand gestures and fingertip positions to track motion and convert it into
+                        on-screen drawings. It uses color segmentation or hand landmark detection for accurate tracking
+                        and supports features like color selection, erasing, and clearing the canvas.</p>
+                    <a href="https://github.com/ChaitanyaSekra/movie-recommender" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+            <!-- Repeat modal blocks for project3 to project5 similarly -->
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Contact: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chaitanyasekra123@gmail.com"
+                    target="_blank"> chaitanyasekra123@gmail.com</a></p>
+            <p>Find me on <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">LinkedIn</a></p>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = 'block';
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+
+    // Optional: Close modals when clicking outside content
+    window.onclick = function (event) {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    }
+    function openModal(id) {
+        document.getElementById(id).style.display = 'block';
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+
+    window.onclick = function (event) {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    }
+
+    function clickAnimation(button) {
+        button.style.animation = "clickPop 0.3s ease";
+        setTimeout(() => {
+            button.style.animation = "";
+        }, 300);
+    }
+
+</script>
+
+
+</html>
