@@ -5,7 +5,7 @@ This site is a digital reflection of who I am — a passionate student, develope
 
 ## 🔍 Live Demo
 
-Check out the live version here: [chaitanyasekra.me](https://chaitanya-sekra-portfolio.netlify.app/)
+Check out the live version here: [chaitanya-sekra-portfolio](https://chaitanya-sekra-portfolio.netlify.app/)
 
 ## 🛠️ Built With
 
