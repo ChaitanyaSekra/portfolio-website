@@ -19,9 +19,8 @@ Check out the live version here: [chaitanya-sekra-portfolio](https://chaitanya-s
 - 💡 **About Me** – A short intro about my background and interests  
 - 💼 **Experience** – Details of internships and roles I've undertaken  
 - 🧠 **Skills** – Technologies and tools I’ve worked with  
-- 📂 **Projects** – Highlights of my favorite works  
-- 🌙 **Dark Mode** – Toggle between light and dark themes  
-- 📱 **Responsive Layout** – Optimized for all screen sizes
+- 📂 **Projects** – Highlights of my favorite works
+- 📜 **Certificates** - Highlights the courses I have completed
 
 ## 🚀 Getting Started
 
