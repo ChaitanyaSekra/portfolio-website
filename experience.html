@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <title>Experience - Chaitanya Sekra</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Popup container - can be anything you want */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #FEFAE0;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            color: #415A77;
+            text-align: justify;
+        }
+
+        /* Close button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            /* Increased gap between buttons */
+            margin-top: 55px;
+            /* Lowers the buttons */
+        }
+
+        button {
+            padding: 0.2em 0.5em;
+            width: 18.3em;
+            /* Increased width */
+            height: 5em;
+            /* Increased height */
+            background-color: #0B4442;
+            border: 0.08em solid #FEFAE0;
+            border-radius: 0.3em;
+            font-size: 14px;
+            /* Slightly increased font size */
+            cursor: pointer;
+            display: block;
+        }
+
+        button span {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 0.55em;
+            right: 0.26em;
+            width: 12em;
+            /* Adjusted width to fit text */
+            height: 3em;
+            /* Adjusted height */
+            background-color: #0B4442;
+            border-radius: 0.2em;
+            font-size: 1.5em;
+            color: #FEFAE0;
+            border: 0.08em solid #fff;
+            box-shadow: 0 0.4em 0.1em 0.019em #FEFAE0;
+        }
+
+        button span:hover {
+            transition: all 0.5s;
+            transform: translate(0, 0.4em);
+            box-shadow: 0 0 0 0 #fff;
+        }
+
+        button span:not(hover) {
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="name-animation">Chaitanya Sekra</h1>
+            <p class="tagline">AI & ML Enthusiast | Web Developer | Tech Advocate</p>
+
+            <nav>
+                <a href="home.html" class="nav-link"><span>Home</span></a>
+                <a href="about.html" class="nav-link"><span>About Me</span></a>
+                <a href="skills.html" class="nav-link"><span>Skills</span></a>
+                <a href="projects.html" class="nav-link"><span>Projects</span></a>
+                <a href="certificates.html" class="nav-link"><span>Certificates</span></a>
+                <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" class="nav-link" target="_blank"><span>Resume</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="button-group">
+                <button onclick="playClickSound(); openPopup('webDev')"><span> Web Dev Intern at Dreamsoft4u</span></button>
+                <button onclick="playClickSound(); openPopup('DI')"><span>AI ML Intern at<br> Data Ingenious</span></button>
+            </div>
+        </div>
+    </section>
+    <section class="content-section">
+        <div class="container">
+            <h2>Volunteering Experience</h2>
+            <div class="button-group">
+                <button onclick="playClickSound(); openPopup('communityManager')"><span>Community Manager at Turing Sapiens</span></button>
+                <button onclick="playClickSound(); openPopup('treasurer')"><span>Treasurer at<br>Turing Sapiens</span></button>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Popup elements -->
+    <div id="treasurer" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('treasurer')">&times;</span>
+            <h3>Treasurer at Turing Sapiens</h3>
+            <p><strong>July 2024 - May 2025</strong><br>
+                As the Treasurer of Turing Sapiens, I manage the financial operations of the organization, ensuring all
+                funds are utilized effectively and transparently. My role involves budgeting, financial planning, and
+                ensuring that all financial activities align with the organization's goals. I also collaborate with the
+                executive team to make informed financial decisions and support various events and initiatives.
+            </p>
+        </div>
+    </div>
+
+    <div id="communityManager" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('communityManager')">&times;</span>
+            <h3>Community Manager at Turing Sapiens</h3>
+            <p><strong>August 2023 - May 2024</strong><br>
+                During my tenure as a Community Manager at Turing Sapiens, I was responsible for fostering engagement
+                within our community of tech enthusiasts. My role involved organizing events, managing social media
+                channels, and ensuring smooth communication among members. I developed and implemented strategies to
+                increase participation, which led to a more vibrant and interactive community. This experience honed my
+                management, communication, and organizational skills.</p>
+        </div>
+    </div>
+
+    <div id="webDev" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('webDev')">&times;</span>
+            <h3>Web Development Intern at Dreamsoft4u, Jaipur</h3>
+            <p><strong>May 2024 - June 2024</strong><br>
+                At Dreamsoft4U, I worked as a Web Development Intern, where I focused on backend development using SQL
+                and Python. I was involved in querying databases, automating tasks, and collaborating with the
+                development team to enhance the overall functionality of web applications. This experience deepened my
+                technical skills and gave me valuable insights into the practical aspects of web development. </p>
+        </div>
+    </div>
+
+    <div id="DI" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('DI')">&times;</span>
+            <h3>AI ML Intern at Data Ingenious, Jaipur</h3>
+            <p><strong>May 2025 - Present</strong><br>
+                Assisting in the development and testing of machine learning models for real-world applications. Working with datasets, performing data preprocessing, and contributing to internal AI/ML projects using Python and libraries like scikit-learn and TensorFlow. Gaining hands-on experience in industry-standard practices.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Contact: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chaitanyasekra123@gmail.com"
+                    target="_blank"> chaitanyasekra123@gmail.com</a></p>
+            <p>Find me on <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">LinkedIn</a></p>
+        </div>
+    </footer>
+
+    <!-- Audio element -->
+    <audio id="clickSound" src="sounds/button press.wav"></audio>
+
+    <!-- JavaScript -->
+    <script>
+        const clickSound = document.getElementById('clickSound');
+
+        function playClickSound() {
+            clickSound.currentTime = 0; // Reset the sound to the beginning
+            clickSound.play();
+        }
+
+        function openPopup(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
