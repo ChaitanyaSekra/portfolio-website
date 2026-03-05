@@ -79,7 +79,7 @@ Feel free to reach out or connect!
 
 - 🌐 Portfolio: [chaitanya-sekra-portfolio.netlify.app](https://chaitanya-sekra-portfolio.netlify.app)
 - 💼 LinkedIn: [linkedin.com/in/chaitanya-sekra](https://www.linkedin.com/in/chaitanya-sekra/)
-- 📧 Email: your@email.com
+- 📧 Email: chaitanyasekra123@gmail.com
 - 🐙 GitHub: [@ChaitanyaSekra](https://github.com/ChaitanyaSekra)
 
 ---
