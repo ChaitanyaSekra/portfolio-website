@@ -1,116 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <title>Skills - Chaitanya Sekra</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills — Chaitanya Sekra</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category-title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .skill-category-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .skill-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+    .skill-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .skill-name {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+    .skill-level {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* Tech icon grid */
+    .tech-cloud {
+      margin-top: 4rem;
+    }
+    .tech-cloud-title {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      letter-spacing: 0.1em;
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+      cursor: default;
+      position: relative;
+    }
+    .tech-pill:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0,245,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Categories color coding */
+    .cat-ai .skill-category-title { color: #a78bfa; }
+    .cat-ai .progress-fill { background: linear-gradient(90deg, #7c3aed, #a78bfa); box-shadow: 0 0 8px #a78bfa; }
+
+    .cat-web .skill-category-title { color: #34d399; }
+    .cat-web .progress-fill { background: linear-gradient(90deg, #059669, #34d399); box-shadow: 0 0 8px #34d399; }
+
+    .cat-lang .skill-category-title { color: var(--accent-cyan); }
+
+    .cat-tools .skill-category-title { color: #f59e0b; }
+    .cat-tools .progress-fill { background: linear-gradient(90deg, #d97706, #f59e0b); box-shadow: 0 0 8px #f59e0b; }
+  </style>
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <h1 class="name-animation">Chaitanya Sekra</h1>
-            <p class="tagline">AI & ML Enthusiast | Web Developer | Tech Advocate</p>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <div class="grid-bg"></div>
 
-            <nav>
-                <a href="home.html" class="nav-link"><span>Home</span></a>
-                <a href="about.html" class="nav-link"><span>About Me</span></a>
-                <a href="experience.html" class="nav-link"><span>Experience</span></a>
-                <a href="projects.html" class="nav-link"><span>Projects</span></a>
-                <a href="certificates.html" class="nav-link"><span>Certificates</span></a>
-                <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing"
-                    class="nav-link" target="_blank"><span>Resume</span></a>
-            </nav>
+  <nav>
+    <a href="home.html" class="nav-logo">CS<span>.exe</span></a>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="certificates.html">Certs</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <section>
+      <div class="section-header">
+        <span class="section-tag">03 // skills</span>
+        <h2 class="section-title">Tech <span>Stack</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="skills-grid">
+
+        <!-- AI / ML -->
+        <div class="card cat-ai observe">
+          <div class="card-corner tl"></div><div class="card-corner tr"></div>
+          <div class="card-corner bl"></div><div class="card-corner br"></div>
+          <div class="skill-category-title">AI / ML</div>
+
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">TensorFlow / Keras</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">PyTorch</span><span class="skill-level">Intermediate</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">HuggingFace Transformers</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">scikit-learn</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">OpenCV / Computer Vision</span><span class="skill-level">Intermediate</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">NLP (TF-IDF, Embeddings)</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div>
+          </div>
         </div>
-    </header>
 
-    <section class="content-section">
-        <div class="container">
-            <h2>Skills</h2>
+        <!-- Web Dev -->
+        <div class="card cat-web observe" style="transition-delay:0.1s">
+          <div class="card-corner tl"></div><div class="card-corner tr"></div>
+          <div class="card-corner bl"></div><div class="card-corner br"></div>
+          <div class="skill-category-title">Web Development</div>
 
-            <h3 class="skills-category">Coding Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-box">
-                    <img src="images/python.png" alt="Python">
-                    <span><br>Python</span>
-                </div>
-                <div class="skill-box">
-                    <img src="images/c.png" alt="C++">
-                    <span><br>C Lang</span>
-                </div>
-                <div class="skill-box">
-                    <img src="images/js.png" alt="JavaScript">
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-box">
-                    <img src="images/html.png" alt="HTML">
-                    <span><br>HTML</span>
-                </div>
-                <div class="skill-box">
-                    <img src="images/css.png" alt="CSS">
-                    <span><br>CSS</span>
-                </div>
-                <div class="skill-box">
-                    <img src="images/mysql.png" alt="SQL">
-                    <span><br>SQL</span>
-                </div>
-                <!-- Add more skill-boxes as needed -->
-            </div>
-
-            <h3 class="skills-category">Soft Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-box soft">
-                    <img src="images/communication.png" alt="Communication">
-                    <span><br>Communication</span>
-                </div>
-                <div class="skill-box soft">
-                    <img src="images/teamwork.png" alt="Teamwork">
-                    <span><br>Team Collaboration</span>
-                </div>
-                <div class="skill-box soft">
-                    <img src="images/problem_solving.png" alt="Problem Solving">
-                    <span><br>Problem Solving</span>
-                </div>
-                <div class="skill-box soft">
-                    <img src="images/time.png" alt="Time Management">
-                    <span><br>Time Management</span>
-                </div>
-                <!-- Add more soft skills -->
-            </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">HTML5 / CSS3</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">JavaScript (ES6+)</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">Flask / FastAPI</span><span class="skill-level">Intermediate</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">REST APIs</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">SQL / Databases</span><span class="skill-level">Intermediate</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+          </div>
         </div>
+
+        <!-- Languages -->
+        <div class="card cat-lang observe" style="transition-delay:0.2s">
+          <div class="card-corner tl"></div><div class="card-corner tr"></div>
+          <div class="card-corner bl"></div><div class="card-corner br"></div>
+          <div class="skill-category-title">Languages</div>
+
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">Python</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">JavaScript</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:83%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">SQL</span><span class="skill-level">Intermediate</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">C / C++</span><span class="skill-level">Intermediate</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="card cat-tools observe" style="transition-delay:0.3s">
+          <div class="card-corner tl"></div><div class="card-corner tr"></div>
+          <div class="card-corner bl"></div><div class="card-corner br"></div>
+          <div class="skill-category-title">Tools & Platforms</div>
+
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">Git / GitHub</span><span class="skill-level">Advanced</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">Pinecone Vector DB</span><span class="skill-level">Intermediate</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">Netlify / Deployment</span><span class="skill-level">Intermediate</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech pills cloud -->
+      <div class="tech-cloud observe">
+        <div class="tech-cloud-title">// full tech arsenal</div>
+        <div class="tech-pills">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">TensorFlow</span>
+          <span class="tech-pill">PyTorch</span>
+          <span class="tech-pill">HuggingFace</span>
+          <span class="tech-pill">scikit-learn</span>
+          <span class="tech-pill">OpenCV</span>
+          <span class="tech-pill">LSTM</span>
+          <span class="tech-pill">Transformers</span>
+          <span class="tech-pill">ArcFace</span>
+          <span class="tech-pill">Pinecone</span>
+          <span class="tech-pill">TF-IDF</span>
+          <span class="tech-pill">Music21</span>
+          <span class="tech-pill">Flask</span>
+          <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">HTML5</span>
+          <span class="tech-pill">CSS3</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">SQL</span>
+          <span class="tech-pill">Git</span>
+          <span class="tech-pill">Netlify</span>
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">NumPy</span>
+          <span class="tech-pill">Matplotlib</span>
+        </div>
+      </div>
     </section>
+  </div>
 
-    <footer>
-            <div class="footer-container">
-                <div class="footer-left"></div>
+  <footer>
+    <span class="footer-text">© 2025 CHAITANYA SEKRA</span>
+    <div class="footer-links">
+      <a href="https://github.com/chaitanyasekra" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">LinkedIn</a>
+      <a href="mailto:chaitanyasekra123@gmail.com">Email</a>
+      <a href="https://sekraog.netlify.app/" target="_blank">Music</a>
+      <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" target="_blank">Resume</a>
+    </div>
+  </footer>
 
-                <div class="footer-center">
-                    <p>
-                        Contact:
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chaitanyasekra123@gmail.com"
-                            target="_blank">
-                            chaitanyasekra123@gmail.com
-                        </a>
-                    </p>
-                    <p>
-                        Find me on
-                        <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">
-                            LinkedIn
-                        </a>
-                    </p>
-                </div>
-
-                <div class="footer-right">
-                    <a href="https://sekraog.netlify.app/" target="_blank"
-                        class="fancy-btn music-footer-btn">
-                        Music Portfolio
-                    </a>
-                </div>
-            </div>
-        </footer>
+  <script src="script.js"></script>
 </body>
-
 </html>

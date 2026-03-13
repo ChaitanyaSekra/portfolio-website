@@ -1,79 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <title>Chaitanya Sekra - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaitanya Sekra — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 4rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    canvas#particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 750px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: var(--accent-cyan);
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-name .first { color: var(--text-primary); }
+    .hero-name .last {
+      color: var(--accent-cyan);
+      text-shadow: 0 0 40px rgba(0,245,255,0.5);
+      display: block;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-mono);
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--text-secondary);
+      margin: 2rem 0;
+      min-height: 1.5em;
+      letter-spacing: 0.05em;
+    }
+    .hero-tagline .cursor-blink {
+      display: inline-block;
+      width: 2px; height: 1em;
+      background: var(--accent-cyan);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+    }
+    .stat-item { }
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(0,245,255,0.4);
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* HUD decorations */
+    .hud-panel {
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: flex-end;
+    }
+
+    .hud-box {
+      border: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      min-width: 160px;
+      position: relative;
+    }
+    .hud-box-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .hud-box-value {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+    }
+
+    .hud-time {
+      font-size: 1.2rem !important;
+      letter-spacing: 0.1em;
+    }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .status-text {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #00ff88;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.4;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint span {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--accent-cyan);
+    }
+    .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 1px solid var(--accent-cyan);
+      border-bottom: 1px solid var(--accent-cyan);
+      transform: rotate(45deg);
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @media (max-width: 900px) {
+      .hud-panel { display: none; }
+      .hero { padding: 3rem 1.5rem; }
+    }
+  </style>
 </head>
-
 <body>
-    <div id="main-content">
-        <header>
-            <div class="container">
-                <h1 class="name-animation">Chaitanya Sekra</h1>
-                <p class="text-2">Artificial Intelligence...</p>
-                <p class="text-1">Machine Learning...</p>
-                <p class="tagline">AI & ML Enthusiast | Tech Advocate | Music Producer</p>
-                <nav>
-                    <a href="about.html" class="nav-link"><span>About Me</span></a>
-                    <a href="experience.html" class="nav-link"><span>Experience</span></a>
-                    <a href="skills.html" class="nav-link"><span>Skills</span></a>
-                    <a href="projects.html" class="nav-link"><span>Projects</span></a>
-                    <a href="certificates.html" class="nav-link"><span>Certificates</span></a>
-                    <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing"
-                        class="nav-link" target="_blank"><span>Resume</span></a>
-                </nav>
-            </div>
-        </header>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <div class="grid-bg"></div>
+  <canvas id="particles"></canvas>
 
-        <section class="content-section">
-            <div class="container">
-                <div class="intro-container">
-                    <img src="images/self.jpeg" alt="Chaitanya Sekra" class="profile-image">
-                    <div class="intro-text">
-                        <p class="intro">
-                            I’m Chaitanya Sekra, a developer who likes understanding how things work under
-                            the hood. I build projects in AI/ML and software development, and I’m always curious about
-                            learning better, faster, and smarter ways to solve problems.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <nav>
+    <a href="home.html" class="nav-logo">CS<span>.exe</span></a>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="certificates.html">Certs</a></li>
+    </ul>
+  </nav>
 
-        <footer>
-            <div class="footer-container">
-                <div class="footer-left"></div>
+  <div class="page">
+    <div class="hero">
+      <div class="hero-content fade-up">
+        <div class="hero-eyebrow">
+          <span class="status-dot"></span>
+          Available for opportunities
+        </div>
 
-                <div class="footer-center">
-                    <p>
-                        Contact:
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chaitanyasekra123@gmail.com"
-                            target="_blank">
-                            chaitanyasekra123@gmail.com
-                        </a>
-                    </p>
-                    <p>
-                        Find me on
-                        <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">
-                            LinkedIn
-                        </a>
-                    </p>
-                </div>
+        <h1 class="hero-name">
+          <span class="first">Chaitanya</span>
+          <span class="last glitch" data-text="Sekra">Sekra</span>
+        </h1>
 
-                <div class="footer-right">
-                    <a href="https://sekraog.netlify.app/" target="_blank"
-                        class="fancy-btn music-footer-btn">
-                        Music Portfolio
-                    </a>
-                </div>
-            </div>
-        </footer>
+        <p class="hero-tagline" id="typewriter-text">
+          <span class="cursor-blink"></span>
+        </p>
+
+        <p class="hero-desc fade-up delay-2">
+          Developer who likes understanding how things work under the hood. I build in AI/ML and software development — always curious about learning better, faster, smarter ways to solve problems. Also a music producer on the side.
+        </p>
+
+        <div class="hero-actions fade-up delay-3">
+          <a href="projects.html" class="btn">// View Projects</a>
+          <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" class="btn btn-outline" target="_blank">// Resume</a>
+        </div>
+
+        <div class="hero-stats fade-up delay-4">
+          <div class="stat-item">
+            <div class="stat-value">3+</div>
+            <div class="stat-label">AI/ML Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">2</div>
+            <div class="stat-label">Internships</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">∞</div>
+            <div class="stat-label">Curiosity</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hud-panel fade-up delay-3">
+        <div class="hud-box">
+          <div class="hud-box-label">System Time</div>
+          <div class="hud-box-value hud-time">00:00:00</div>
+        </div>
+        <div class="hud-box">
+          <div class="hud-box-label">Location</div>
+          <div class="hud-box-value">Jaipur, India</div>
+        </div>
+        <div class="hud-box">
+          <div class="hud-box-label">Focus</div>
+          <div class="hud-box-value">AI / ML / Web</div>
+        </div>
+        <div class="hud-box">
+          <div class="hud-box-label">Status</div>
+          <div class="status-row">
+            <span class="status-dot"></span>
+            <span class="status-text">ONLINE</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <span>SCROLL</span>
+        <div class="scroll-arrow"></div>
+      </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <footer>
+    <span class="footer-text">© 2025 CHAITANYA SEKRA</span>
+    <div class="footer-links">
+      <a href="https://github.com/chaitanyasekra" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">LinkedIn</a>
+      <a href="mailto:chaitanyasekra123@gmail.com">Email</a>
+      <a href="https://sekraog.netlify.app/" target="_blank">Music</a>
+      <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" target="_blank">Resume</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Typewriter cycle
+    const phrases = [
+      'AI & ML Enthusiast',
+      'Web Developer',
+      'Tech Advocate',
+      'Music Producer',
+      'Transformers | NLP | Computer Vision',
+      'Building things that actually work'
+    ];
+    let phraseIndex = 0;
+    const el = document.getElementById('typewriter-text');
+
+    function type(text, cb) {
+      let i = 0;
+      el.innerHTML = '<span class="cursor-blink"></span>';
+      const t = setInterval(() => {
+        el.innerHTML = text.slice(0, i) + '<span class="cursor-blink"></span>';
+        i++;
+        if (i > text.length) { clearInterval(t); setTimeout(cb, 1800); }
+      }, 55);
+    }
+
+    function erase(cb) {
+      let text = el.textContent;
+      let i = text.length;
+      const t = setInterval(() => {
+        el.innerHTML = text.slice(0, i) + '<span class="cursor-blink"></span>';
+        i--;
+        if (i < 0) { clearInterval(t); cb(); }
+      }, 30);
+    }
+
+    function cycle() {
+      type(phrases[phraseIndex], () => {
+        erase(() => {
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          cycle();
+        });
+      });
+    }
+    cycle();
+  </script>
 </body>
 </html>

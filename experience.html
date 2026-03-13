@@ -1,243 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <title>Experience - Chaitanya Sekra</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Popup container - can be anything you want */
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience — Chaitanya Sekra</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .exp-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0 3rem;
+      position: relative;
+    }
 
-        /* Popup content */
-        .popup-content {
-            background-color: #FEFAE0;
-            padding: 20px;
-            border-radius: 8px;
-            width: 80%;
-            max-width: 600px;
-            position: relative;
-            color: #415A77;
-            text-align: justify;
-        }
+    /* Sidebar nav */
+    .exp-sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+    .exp-nav-item {
+      display: block;
+      padding: 0.8rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      border-left: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .exp-nav-item:hover, .exp-nav-item.active {
+      color: var(--accent-cyan);
+      border-left-color: var(--accent-cyan);
+      background: rgba(0,245,255,0.04);
+      padding-left: 1.5rem;
+    }
 
-        /* Close button */
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    /* Experience cards */
+    .exp-card {
+      margin-bottom: 2rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+    }
+    .exp-company {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      margin-top: 0.3rem;
+    }
+    .exp-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-align: right;
+    }
+    .exp-type {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(0,245,255,0.2);
+      color: var(--accent-cyan);
+      margin-top: 0.3rem;
+      display: inline-block;
+    }
 
-        .container {
-            text-align: center;
-        }
+    .exp-description {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
 
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 70px;
-            /* Increased gap between buttons */
-            margin-top: 55px;
-            /* Lowers the buttons */
-        }
+    .exp-achievements {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .exp-achievements li {
+      display: flex;
+      gap: 0.75rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .exp-achievements li::before {
+      content: '▸';
+      color: var(--accent-cyan);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
 
-        button {
-            padding: 0.2em 0.5em;
-            width: 18.3em;
-            /* Increased width */
-            height: 5em;
-            /* Increased height */
-            background-color: #0B4442;
-            border: 0.08em solid #FEFAE0;
-            border-radius: 0.3em;
-            font-size: 14px;
-            /* Slightly increased font size */
-            cursor: pointer;
-            display: block;
-        }
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
 
-        button span {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            bottom: 0.55em;
-            right: 0.26em;
-            width: 12em;
-            /* Adjusted width to fit text */
-            height: 3em;
-            /* Adjusted height */
-            background-color: #0B4442;
-            border-radius: 0.2em;
-            font-size: 1.5em;
-            color: #FEFAE0;
-            border: 0.08em solid #fff;
-            box-shadow: 0 0.4em 0.1em 0.019em #FEFAE0;
-        }
+    /* Education section */
+    .edu-card {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .edu-year-block {
+      text-align: center;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .edu-year {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      line-height: 1.4;
+    }
+    .edu-degree {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+    .edu-institution {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-cyan);
+      margin-bottom: 0.6rem;
+    }
+    .edu-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
 
-        button span:hover {
-            transition: all 0.5s;
-            transform: translate(0, 0.4em);
-            box-shadow: 0 0 0 0 #fff;
-        }
-
-        button span:not(hover) {
-            transition: all 1s;
-        }
-    </style>
+    @media (max-width: 768px) {
+      .exp-layout { grid-template-columns: 1fr; }
+      .exp-sidebar { position: static; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+      .exp-nav-item { border-left: none; border-bottom: 1px solid var(--border); padding: 0.5rem 0.75rem; }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <h1 class="name-animation">Chaitanya Sekra</h1>
-            <p class="tagline">AI & ML Enthusiast | Web Developer | Tech Advocate</p>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <div class="grid-bg"></div>
 
-            <nav>
-                <a href="home.html" class="nav-link"><span>Home</span></a>
-                <a href="about.html" class="nav-link"><span>About Me</span></a>
-                <a href="skills.html" class="nav-link"><span>Skills</span></a>
-                <a href="projects.html" class="nav-link"><span>Projects</span></a>
-                <a href="certificates.html" class="nav-link"><span>Certificates</span></a>
-                <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" class="nav-link" target="_blank"><span>Resume</span></a>
-            </nav>
+  <nav>
+    <a href="home.html" class="nav-logo">CS<span>.exe</span></a>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="certificates.html">Certs</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <section>
+      <div class="section-header">
+        <span class="section-tag">04 // experience</span>
+        <h2 class="section-title">Work <span>History</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="exp-layout">
+        <div class="exp-sidebar">
+          <a class="exp-nav-item active">Internships</a>
+          <a class="exp-nav-item">Volunteering</a>
+          <a class="exp-nav-item">Education</a>
         </div>
-    </header>
 
-    <section class="content-section">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            <div class="button-group">
-                <button onclick="playClickSound(); openPopup('webDev')"><span> Web Dev Intern at Dreamsoft4u</span></button>
-                <button onclick="playClickSound(); openPopup('DI')"><span>AI ML Intern at<br> Data Ingenious</span></button>
+        <div>
+          <!-- Internship 1 -->
+          <div class="card exp-card observe" id="aiml-intern">
+            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+            <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">AI / ML Intern</div>
+                <div class="exp-company">Data Ingenious</div>
+              </div>
+              <div class="exp-date">
+                <div>May 2025 — July 2025</div>
+                <div class="exp-type">INTERNSHIP</div>
+              </div>
             </div>
-        </div>
-    </section>
-    <section class="content-section">
-        <div class="container">
-            <h2>Volunteering Experience</h2>
-            <div class="button-group">
-                <button onclick="playClickSound(); openPopup('communityManager')"><span>Community Manager at Turing Sapiens</span></button>
-                <button onclick="playClickSound(); openPopup('treasurer')"><span>Treasurer at<br>Turing Sapiens</span></button>
-            </div>
-        </div>
-    </section>
 
-    
-
-    <!-- Popup elements -->
-    <div id="treasurer" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('treasurer')">&times;</span>
-            <h3>Treasurer at Turing Sapiens</h3>
-            <p><strong>July 2024 - May 2025</strong><br>
-                As the Treasurer of Turing Sapiens, I manage the financial operations of the organization, ensuring all
-                funds are utilized effectively and transparently. My role involves budgeting, financial planning, and
-                ensuring that all financial activities align with the organization's goals. I also collaborate with the
-                executive team to make informed financial decisions and support various events and initiatives.
+            <p class="exp-description">
+              Worked on a series of real-world AI/ML projects spanning recommendation systems, biometric security, and generative music AI. Built production-level models using state-of-the-art architectures and vector databases.
             </p>
-        </div>
-    </div>
 
-    <div id="communityManager" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('communityManager')">&times;</span>
-            <h3>Community Manager at Turing Sapiens</h3>
-            <p><strong>August 2023 - May 2024</strong><br>
-                During my tenure as a Community Manager at Turing Sapiens, I was responsible for fostering engagement
-                within our community of tech enthusiasts. My role involved organizing events, managing social media
-                channels, and ensuring smooth communication among members. I developed and implemented strategies to
-                increase participation, which led to a more vibrant and interactive community. This experience honed my
-                management, communication, and organizational skills.</p>
-        </div>
-    </div>
+            <ul class="exp-achievements">
+              <li>Built a Movie Recommender System using TF-IDF vectorization and cosine similarity, achieving high relevance scores on test datasets.</li>
+              <li>Engineered a Face Recognition system using ArcFace embeddings stored and queried from Pinecone vector database — sub-100ms query time.</li>
+              <li>Designed and trained a Transformer-Based Music Generation Model combining Music21 for symbolic music representation and LSTM layers for sequence modeling.</li>
+              <li>Collaborated on model evaluation pipelines and documented findings for internal knowledge base.</li>
+            </ul>
 
-    <div id="webDev" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('webDev')">&times;</span>
-            <h3>Web Development Intern at Dreamsoft4u, Jaipur</h3>
-            <p><strong>May 2024 - June 2024</strong><br>
-                At Dreamsoft4U, I worked as a Web Development Intern, where I focused on backend development using SQL
-                and Python. I was involved in querying databases, automating tasks, and collaborating with the
-                development team to enhance the overall functionality of web applications. This experience deepened my
-                technical skills and gave me valuable insights into the practical aspects of web development. </p>
-        </div>
-    </div>
-
-    <div id="DI" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('DI')">&times;</span>
-            <h3>AI ML Intern at Data Ingenious, Jaipur</h3>
-            <p><strong>May 2025 - Present</strong><br>
-                Assisting in the development and testing of machine learning models for real-world applications. Working with datasets, performing data preprocessing, and contributing to internal AI/ML projects using Python and libraries like scikit-learn and TensorFlow. Gaining hands-on experience in industry-standard practices.</p>
-        </div>
-    </div>
-
-    <footer>
-            <div class="footer-container">
-                <div class="footer-left"></div>
-
-                <div class="footer-center">
-                    <p>
-                        Contact:
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chaitanyasekra123@gmail.com"
-                            target="_blank">
-                            chaitanyasekra123@gmail.com
-                        </a>
-                    </p>
-                    <p>
-                        Find me on
-                        <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">
-                            LinkedIn
-                        </a>
-                    </p>
-                </div>
-
-                <div class="footer-right">
-                    <a href="https://sekraog.netlify.app/" target="_blank"
-                        class="fancy-btn music-footer-btn">
-                        Music Portfolio
-                    </a>
-                </div>
+            <div class="exp-tags">
+              <span class="tag">Python</span>
+              <span class="tag">TF-IDF</span>
+              <span class="tag">ArcFace</span>
+              <span class="tag">Pinecone</span>
+              <span class="tag">Transformers</span>
+              <span class="tag">LSTM</span>
+              <span class="tag">Music21</span>
             </div>
-        </footer>
+          </div>
 
-    <!-- Audio element -->
-    <audio id="clickSound" src="sounds/button press.wav"></audio>
+          <!-- Internship 2 -->
+          <div class="card exp-card observe" style="transition-delay:0.15s">
+            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+            <div class="card-corner bl"></div><div class="card-corner br"></div>
 
-    <!-- JavaScript -->
-    <script>
-        const clickSound = document.getElementById('clickSound');
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Web Developer Intern</div>
+                <div class="exp-company">Dreamsoft4u, Jaipur</div>
+              </div>
+              <div class="exp-date">
+                <div>May 2024 — June 2024</div>
+                <div class="exp-type">INTERNSHIP</div>
+              </div>
+            </div>
 
-        function playClickSound() {
-            clickSound.currentTime = 0; // Reset the sound to the beginning
-            clickSound.play();
-        }
+            <p class="exp-description">
+              Focused on backend development using SQL and Python. Queried databases, automated tasks, and collaborated with the dev team to enhance functionality of web applications.
+            </p>
 
-        function openPopup(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
+            <ul class="exp-achievements">
+              <li>Developed Python automation scripts to streamline repetitive business workflows.</li>
+              <li>Wrote and optimized SQL queries for data extraction and reporting pipelines.</li>
+              <li>Collaborated with the development team to enhance overall web application functionality.</li>
+            </ul>
 
-        function closePopup(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-    </script>
+            <div class="exp-tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Web Dev</span>
+            </div>
+          </div>
+
+          <!-- Volunteering -->
+          <div class="divider observe">
+            <span class="divider-text">VOLUNTEERING</span>
+          </div>
+
+          <div class="card exp-card observe" style="transition-delay:0.2s">
+            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+            <div class="card-corner bl"></div><div class="card-corner br"></div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Treasurer</div>
+                <div class="exp-company">Turing Sapiens, MUJ</div>
+              </div>
+              <div class="exp-date">
+                <div>July 2024 — May 2025</div>
+                <div class="exp-type">VOLUNTEERING</div>
+              </div>
+            </div>
+            <p class="exp-description">Managed financial operations of the organization, ensuring funds are utilized effectively and transparently. Involved in budgeting, financial planning, and supporting various events and initiatives.</p>
+            <div class="exp-tags">
+              <span class="tag">Financial Planning</span>
+              <span class="tag">Budgeting</span>
+              <span class="tag">Leadership</span>
+            </div>
+          </div>
+
+          <div class="card exp-card observe" style="transition-delay:0.25s">
+            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+            <div class="card-corner bl"></div><div class="card-corner br"></div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Community Manager</div>
+                <div class="exp-company">Turing Sapiens, MUJ</div>
+              </div>
+              <div class="exp-date">
+                <div>August 2023 — May 2024</div>
+                <div class="exp-type">VOLUNTEERING</div>
+              </div>
+            </div>
+            <p class="exp-description">Fostered engagement within a community of tech enthusiasts. Organized events, managed social media channels, and implemented strategies to increase participation — leading to a more vibrant and interactive community.</p>
+            <div class="exp-tags">
+              <span class="tag">Community Management</span>
+              <span class="tag">Event Organizing</span>
+              <span class="tag">Social Media</span>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="divider observe">
+            <span class="divider-text">EDUCATION</span>
+          </div>
+
+          <div class="card observe" style="transition-delay:0.3s">
+            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+            <div class="card-corner bl"></div><div class="card-corner br"></div>
+            <div class="edu-card">
+              <div class="edu-year-block">
+                <div class="edu-year">2022<br/>—<br/>2026</div>
+              </div>
+              <div>
+                <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+                <div class="edu-institution">Manipal University Jaipur</div>
+                <p class="edu-desc">
+                  Final year student with focus areas in AI/ML, web development, and software engineering.
+                  Worked on multiple independent projects, internships, and community leadership throughout the degree.
+                </p>
+                <div class="exp-tags" style="margin-top:1rem;">
+                  <span class="tag">Computer Science</span>
+                  <span class="tag">AI/ML</span>
+                  <span class="tag">Data Structures</span>
+                  <span class="tag">DBMS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <span class="footer-text">© 2025 CHAITANYA SEKRA</span>
+    <div class="footer-links">
+      <a href="https://github.com/chaitanyasekra" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">LinkedIn</a>
+      <a href="mailto:chaitanyasekra123@gmail.com">Email</a>
+      <a href="https://sekraog.netlify.app/" target="_blank">Music</a>
+      <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" target="_blank">Resume</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
