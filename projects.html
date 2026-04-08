@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +13,7 @@
       flex-wrap: wrap;
       margin-bottom: 3rem;
     }
+
     .filter-btn {
       font-family: var(--font-mono);
       font-size: 0.68rem;
@@ -24,10 +26,12 @@
       cursor: none;
       transition: all 0.3s;
     }
-    .filter-btn:hover, .filter-btn.active {
+
+    .filter-btn:hover,
+    .filter-btn.active {
       border-color: var(--accent-cyan);
       color: var(--accent-cyan);
-      box-shadow: 0 0 12px rgba(0,245,255,0.1);
+      box-shadow: 0 0 12px rgba(0, 245, 255, 0.1);
     }
 
     .projects-grid {
@@ -40,18 +44,21 @@
       position: relative;
       overflow: hidden;
     }
+
     .project-number {
       font-family: var(--font-display);
       font-size: 3.5rem;
       font-weight: 900;
-      color: rgba(0,245,255,0.05);
+      color: rgba(0, 245, 255, 0.05);
       position: absolute;
-      top: 1rem; right: 1.5rem;
+      top: 1rem;
+      right: 1.5rem;
       line-height: 1;
       letter-spacing: -0.05em;
       pointer-events: none;
       user-select: none;
     }
+
     .project-type {
       font-family: var(--font-mono);
       font-size: 0.65rem;
@@ -61,6 +68,7 @@
       margin-bottom: 0.75rem;
       opacity: 0.7;
     }
+
     .project-title {
       font-family: var(--font-display);
       font-size: 1rem;
@@ -69,23 +77,27 @@
       margin-bottom: 0.75rem;
       line-height: 1.3;
     }
+
     .project-desc {
       font-size: 0.9rem;
       color: var(--text-secondary);
       line-height: 1.7;
       margin-bottom: 1.5rem;
     }
+
     .project-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
       margin-bottom: 1.5rem;
     }
+
     .project-links {
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
     }
+
     .project-link {
       font-family: var(--font-mono);
       font-size: 0.68rem;
@@ -99,22 +111,31 @@
       padding: 0.3rem 0;
       border-bottom: 1px solid var(--border);
     }
-    .project-link:hover { color: var(--accent-cyan); border-bottom-color: var(--accent-cyan); }
-    .project-link-icon { font-size: 0.8rem; }
+
+    .project-link:hover {
+      color: var(--accent-cyan);
+      border-bottom-color: var(--accent-cyan);
+    }
+
+    .project-link-icon {
+      font-size: 0.8rem;
+    }
 
     /* Featured project - spans full width */
     .project-featured {
       grid-column: 1 / -1;
     }
+
     .project-featured .project-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
       align-items: center;
     }
+
     .project-featured .project-visual {
       aspect-ratio: 16/9;
-      background: rgba(0,245,255,0.03);
+      background: rgba(0, 245, 255, 0.03);
       border: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -126,26 +147,30 @@
       position: relative;
       overflow: hidden;
     }
+
     .project-featured .project-visual::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(135deg, rgba(0,245,255,0.08) 0%, transparent 50%, rgba(124,58,237,0.08) 100%);
+        linear-gradient(135deg, rgba(0, 245, 255, 0.08) 0%, transparent 50%, rgba(124, 58, 237, 0.08) 100%);
     }
+
     .project-visual-grid {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,245,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,245,255,0.05) 1px, transparent 1px);
+        linear-gradient(rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
       background-size: 30px 30px;
     }
+
     .project-visual-text {
       position: relative;
       z-index: 1;
       text-align: center;
     }
+
     .project-visual-icon {
       font-size: 3rem;
       display: block;
@@ -153,11 +178,17 @@
     }
 
     @media (max-width: 768px) {
-      .project-featured { grid-column: auto; }
-      .project-featured .project-inner { grid-template-columns: 1fr; }
+      .project-featured {
+        grid-column: auto;
+      }
+
+      .project-featured .project-inner {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
@@ -194,8 +225,10 @@
 
         <!-- Featured -->
         <div class="card project-card project-featured observe">
-          <div class="card-corner tl"></div><div class="card-corner tr"></div>
-          <div class="card-corner bl"></div><div class="card-corner br"></div>
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
           <div class="project-inner">
             <div class="project-visual">
               <div class="project-visual-grid"></div>
@@ -208,7 +241,9 @@
               <div class="project-number">01</div>
               <div class="project-type">AI / ML — College Major Project</div>
               <div class="project-title">Emotion-Aware Playlist Generator</div>
-              <p class="project-desc">Takes text input from the user — a thought, a journal entry, anything — detects the underlying emotion using a HuggingFace transformer model, and generates a curated playlist that matches the mood. No skip-the-song guessing games; the music finds you.</p>
+              <p class="project-desc">Takes text input from the user — a thought, a journal entry, anything — detects
+                the underlying emotion using a HuggingFace transformer model, and generates a curated playlist that
+                matches the mood. No skip-the-song guessing games; the music finds you.</p>
               <div class="project-tech">
                 <span class="tag">Python</span>
                 <span class="tag">Spotify API</span>
@@ -217,20 +252,56 @@
                 <span class="tag">Emotion Detection</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/ChaitanyaSekra/emotion-aware-spotify-playlist-generator" target="_blank" class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
+                <a href="https://github.com/ChaitanyaSekra/emotion-aware-spotify-playlist-generator" target="_blank"
+                  class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Project 1 -->
+        <div class="card project-card observe" style="transition-delay:0.25s">
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
+          <div class="project-number">02</div>
+          <div class="project-type">Automation - Full Stack Project</div>
+          <div class="project-title">Client Management System</div>
+          <p class="project-desc">
+            Built a full-stack desktop application to manage and automate multi-sheet workflows using a PyQt6 interface
+            and a Google Apps Script REST API.
+            Implemented multi-threaded API handling and caching for a responsive UI, and integrated AutoHotkey (AHK)
+            scripts to automate stock selling and purchasing operations, significantly reducing manual effort.
+          </p>
+          <div class="project-tech">
+            <span class="tag">Python</span>
+            <span class="tag">PyQt6</span>
+            <span class="tag">Google Apps Script</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Requests</span>
+            <span class="tag">QThread</span>
+            <span class="tag">AutoHotkey</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ChaitanyaSekra/sheetsmanager" target="_blank" class="project-link">
+              <span class="project-link-icon">⌥</span> GitHub
+            </a>
+          </div>
+        </div>
+
+
         <!-- Project 2 -->
         <div class="card project-card observe" style="transition-delay:0.25s">
-          <div class="card-corner tl"></div><div class="card-corner tr"></div>
-          <div class="card-corner bl"></div><div class="card-corner br"></div>
-          <div class="project-number">02</div>
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
+          <div class="project-number">03</div>
           <div class="project-type">Generative AI — Internship</div>
           <div class="project-title">Transformer-Based Music Generation Model</div>
-          <p class="project-desc">Trained a model combining Music21 for symbolic music parsing and LSTM/Transformer layers for sequence prediction. Generates original multi-instrument MIDI compositions from seed inputs.</p>
+          <p class="project-desc">Trained a model combining Music21 for symbolic music parsing and LSTM/Transformer
+            layers for sequence prediction. Generates original multi-instrument MIDI compositions from seed inputs.</p>
           <div class="project-tech">
             <span class="tag">Music21</span>
             <span class="tag">LSTM</span>
@@ -238,18 +309,22 @@
             <span class="tag">PyTorch</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/ChaitanyaSekra/text-to-beat-generator" target="_blank" class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
+            <a href="https://github.com/ChaitanyaSekra/text-to-beat-generator" target="_blank"
+              class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
           </div>
         </div>
 
         <!-- Project 3 -->
         <div class="card project-card observe" style="transition-delay:0.2s">
-          <div class="card-corner tl"></div><div class="card-corner tr"></div>
-          <div class="card-corner bl"></div><div class="card-corner br"></div>
-          <div class="project-number">03</div>
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
+          <div class="project-number">04</div>
           <div class="project-type">AI / ML — Internship</div>
           <div class="project-title">Face Recognition System (ArcFace + Pinecone)</div>
-          <p class="project-desc">High-accuracy face recognition pipeline using ArcFace embeddings stored in Pinecone vector DB. Sub-100ms query time even at scale. Originally built as a door lock security system.</p>
+          <p class="project-desc">High-accuracy face recognition pipeline using ArcFace embeddings stored in Pinecone
+            vector DB. Sub-100ms query time even at scale. Originally built as a door lock security system.</p>
           <div class="project-tech">
             <span class="tag">ArcFace</span>
             <span class="tag">Pinecone</span>
@@ -257,18 +332,22 @@
             <span class="tag">Python</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/ChaitanyaSekra/Face-recognition-attendance-system" target="_blank" class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
+            <a href="https://github.com/ChaitanyaSekra/Face-recognition-attendance-system" target="_blank"
+              class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
           </div>
         </div>
 
         <!-- Project 4 -->
         <div class="card project-card observe" style="transition-delay:0.35s">
-          <div class="card-corner tl"></div><div class="card-corner tr"></div>
-          <div class="card-corner bl"></div><div class="card-corner br"></div>
-          <div class="project-number">04</div>
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
+          <div class="project-number">05</div>
           <div class="project-type">AI / ML — Internship</div>
           <div class="project-title">Movie Recommender System</div>
-          <p class="project-desc">Content-based movie recommendation engine using TF-IDF vectorization on movie metadata and cosine similarity scoring. Returns top-N similar movies based on plot, genre, and cast features.</p>
+          <p class="project-desc">Content-based movie recommendation engine using TF-IDF vectorization on movie metadata
+            and cosine similarity scoring. Returns top-N similar movies based on plot, genre, and cast features.</p>
           <div class="project-tech">
             <span class="tag">TF-IDF</span>
             <span class="tag">Cosine Similarity</span>
@@ -276,18 +355,23 @@
             <span class="tag">Pandas</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/ChaitanyaSekra/movie-recommender" target="_blank" class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
+            <a href="https://github.com/ChaitanyaSekra/movie-recommender" target="_blank" class="project-link"><span
+                class="project-link-icon">⌥</span> GitHub</a>
           </div>
         </div>
 
         <!-- Project 5 -->
         <div class="card project-card observe" style="transition-delay:0.35s">
-          <div class="card-corner tl"></div><div class="card-corner tr"></div>
-          <div class="card-corner bl"></div><div class="card-corner br"></div>
-          <div class="project-number">05</div>
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
+          <div class="project-number">06</div>
           <div class="project-type">AI / ML — College Minor Project</div>
           <div class="project-title">AI-Based Traffic Management System</div>
-          <p class="project-desc">An AI-based project that analyzes real-time traffic images to optimize traffic signals using vehicle detection via YOLOv8 and time calculations using Deep Q-Learning. Focused on improving urban traffic flow using Python and OpenCV.</p>
+          <p class="project-desc">An AI-based project that analyzes real-time traffic images to optimize traffic signals
+            using vehicle detection via YOLOv8 and time calculations using Deep Q-Learning. Focused on improving urban
+            traffic flow using Python and OpenCV.</p>
           <div class="project-tech">
             <span class="tag">Python</span>
             <span class="tag">YOLOv8</span>
@@ -295,40 +379,54 @@
             <span class="tag">Pandas</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/darshita27-cmd/Traffic-Management-system-using-Deep-Q" target="_blank" class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
+            <a href="https://github.com/darshita27-cmd/Traffic-Management-system-using-Deep-Q" target="_blank"
+              class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
           </div>
         </div>
 
         <!-- Project 6 -->
         <div class="card project-card observe" style="transition-delay:0.35s">
-          <div class="card-corner tl"></div><div class="card-corner tr"></div>
-          <div class="card-corner bl"></div><div class="card-corner br"></div>
-          <div class="project-number">06</div>
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
+          <div class="project-number">07</div>
           <div class="project-type">Computer Vision — Personal Project</div>
           <div class="project-title">Air Canvas</div>
-          <p class="project-desc">An interactive computer vision project that allows users to draw on the screen in real-time by moving their fingers in the air, without touching any surface. Built using Python and OpenCV, the system detects hand gestures and fingertip positions to track motion and convert it into on-screen drawings. It uses color segmentation or hand landmark detection for accurate tracking and supports features like color selection, erasing, and clearing the canvas.</p>
+          <p class="project-desc">An interactive computer vision project that allows users to draw on the screen in
+            real-time by moving their fingers in the air, without touching any surface. Built using Python and OpenCV,
+            the system detects hand gestures and fingertip positions to track motion and convert it into on-screen
+            drawings. It uses color segmentation or hand landmark detection for accurate tracking and supports features
+            like color selection, erasing, and clearing the canvas.</p>
           <div class="project-tech">
             <span class="tag">Python</span>
             <span class="tag">OpenCV</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/ChaitanyaSekra/AirCanvas" target="_blank" class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
+            <a href="https://github.com/ChaitanyaSekra/AirCanvas" target="_blank" class="project-link"><span
+                class="project-link-icon">⌥</span> GitHub</a>
           </div>
         </div>
 
         <!-- Project 7 -->
         <div class="card project-card observe" style="transition-delay:0.35s">
-          <div class="card-corner tl"></div><div class="card-corner tr"></div>
-          <div class="card-corner bl"></div><div class="card-corner br"></div>
-          <div class="project-number">07</div>
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
+          <div class="project-number">08</div>
           <div class="project-type">RDBMS — Personal Project</div>
           <div class="project-title">Library Management System</div>
-          <p class="project-desc">A database-driven system designed to manage core library operations efficiently. Built using SQL, the project tracks book inventory, borrowing records, issue and return dates, and user activity. It also determines fine eligibility based on delayed returns, ensuring accurate record-keeping and accountability within the library system.</p>
+          <p class="project-desc">A database-driven system designed to manage core library operations efficiently. Built
+            using SQL, the project tracks book inventory, borrowing records, issue and return dates, and user activity.
+            It also determines fine eligibility based on delayed returns, ensuring accurate record-keeping and
+            accountability within the library system.</p>
           <div class="project-tech">
             <span class="tag">MySQL</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/ChaitanyaSekra/Library-Management-System-" target="_blank" class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
+            <a href="https://github.com/ChaitanyaSekra/Library-Management-System-" target="_blank"
+              class="project-link"><span class="project-link-icon">⌥</span> GitHub</a>
           </div>
         </div>
 
@@ -343,7 +441,8 @@
       <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">LinkedIn</a>
       <a href="mailto:chaitanyasekra123@gmail.com">Email</a>
       <a href="https://sekraog.netlify.app/" target="_blank">Music</a>
-      <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" target="_blank">Resume</a>
+      <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing"
+        target="_blank">Resume</a>
     </div>
   </footer>
 
