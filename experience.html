@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +20,7 @@
       top: 100px;
       height: fit-content;
     }
+
     .exp-nav-item {
       display: block;
       padding: 0.8rem 1rem;
@@ -30,10 +32,12 @@
       border-left: 1px solid var(--border);
       transition: all 0.3s;
     }
-    .exp-nav-item:hover, .exp-nav-item.active {
+
+    .exp-nav-item:hover,
+    .exp-nav-item.active {
       color: var(--accent-cyan);
       border-left-color: var(--accent-cyan);
-      background: rgba(0,245,255,0.04);
+      background: rgba(0, 245, 255, 0.04);
       padding-left: 1.5rem;
     }
 
@@ -41,6 +45,7 @@
     .exp-card {
       margin-bottom: 2rem;
     }
+
     .exp-header {
       display: flex;
       justify-content: space-between;
@@ -49,18 +54,21 @@
       flex-wrap: wrap;
       gap: 0.5rem;
     }
+
     .exp-role {
       font-family: var(--font-display);
       font-size: 1.1rem;
       color: var(--text-primary);
       letter-spacing: 0.05em;
     }
+
     .exp-company {
       font-family: var(--font-mono);
       font-size: 0.8rem;
       color: var(--accent-cyan);
       margin-top: 0.3rem;
     }
+
     .exp-date {
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -68,11 +76,12 @@
       letter-spacing: 0.1em;
       text-align: right;
     }
+
     .exp-type {
       font-family: var(--font-mono);
       font-size: 0.65rem;
       padding: 0.2rem 0.6rem;
-      border: 1px solid rgba(0,245,255,0.2);
+      border: 1px solid rgba(0, 245, 255, 0.2);
       color: var(--accent-cyan);
       margin-top: 0.3rem;
       display: inline-block;
@@ -92,6 +101,7 @@
       gap: 0.6rem;
       margin-bottom: 1.5rem;
     }
+
     .exp-achievements li {
       display: flex;
       gap: 0.75rem;
@@ -100,6 +110,7 @@
       color: var(--text-secondary);
       line-height: 1.6;
     }
+
     .exp-achievements li::before {
       content: '▸';
       color: var(--accent-cyan);
@@ -121,18 +132,21 @@
       gap: 1.5rem;
       align-items: start;
     }
+
     .edu-year-block {
       text-align: center;
       padding: 0.75rem;
       border: 1px solid var(--border);
       background: var(--bg-card);
     }
+
     .edu-year {
       font-family: var(--font-display);
       font-size: 0.75rem;
       color: var(--accent-cyan);
       line-height: 1.4;
     }
+
     .edu-degree {
       font-family: var(--font-display);
       font-size: 1rem;
@@ -140,24 +154,41 @@
       letter-spacing: 0.05em;
       margin-bottom: 0.3rem;
     }
+
     .edu-institution {
       font-family: var(--font-mono);
       font-size: 0.78rem;
       color: var(--accent-cyan);
       margin-bottom: 0.6rem;
     }
+
     .edu-desc {
       font-size: 0.95rem;
       color: var(--text-secondary);
     }
 
     @media (max-width: 768px) {
-      .exp-layout { grid-template-columns: 1fr; }
-      .exp-sidebar { position: static; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
-      .exp-nav-item { border-left: none; border-bottom: 1px solid var(--border); padding: 0.5rem 0.75rem; }
+      .exp-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-sidebar {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .exp-nav-item {
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+        padding: 0.5rem 0.75rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
@@ -185,16 +216,52 @@
 
       <div class="exp-layout">
         <div class="exp-sidebar">
-          <a class="exp-nav-item active">Internships</a>
-          <a class="exp-nav-item">Volunteering</a>
-          <a class="exp-nav-item">Education</a>
+          <a href="#jobs" class="exp-nav-item active">Jobs</a>
+          <a href="#internships" class="exp-nav-item">Internships</a>
+          <a href="#volunteering" class="exp-nav-item">Volunteering</a>
+          <a href="#education" class="exp-nav-item">Education</a>
         </div>
 
         <div>
+
+          <div class="divider observe" id="jobs">
+            <span class="divider-text">JOBS</span>
+          </div>
+
+          <!-- Job 1-->
+
+          <div class="card exp-card observe">
+            <div class="card-corner tl"></div>
+            <div class="card-corner tr"></div>
+            <div class="card-corner bl"></div>
+            <div class="card-corner br"></div>
+
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Associate Software Engineer</div>
+                <div class="exp-company">Accenture</div>
+              </div>
+              <div class="exp-date">
+                <div>Aug 2026 - Present</div>
+                <div class="exp-type">Job</div>
+              </div>
+            </div>
+
+            <p class="exp-description">
+              Let me work a little longer...
+            </p>
+
+          </div>
+
+          <div class="divider observe" id="internships">
+            <span class="divider-text">INTERNSHIPS</span>
+          </div>
           <!-- Internship 1 -->
-          <div class="card exp-card observe" id="aiml-intern">
-            <div class="card-corner tl"></div><div class="card-corner tr"></div>
-            <div class="card-corner bl"></div><div class="card-corner br"></div>
+          <div class="card exp-card observe" >
+            <div class="card-corner tl"></div>
+            <div class="card-corner tr"></div>
+            <div class="card-corner bl"></div>
+            <div class="card-corner br"></div>
 
             <div class="exp-header">
               <div>
@@ -208,13 +275,18 @@
             </div>
 
             <p class="exp-description">
-              Worked on a series of real-world AI/ML projects spanning recommendation systems, biometric security, and generative music AI. Built production-level models using state-of-the-art architectures and vector databases.
+              Worked on a series of real-world AI/ML projects spanning recommendation systems, biometric security, and
+              generative music AI. Built production-level models using state-of-the-art architectures and vector
+              databases.
             </p>
 
             <ul class="exp-achievements">
-              <li>Built a Movie Recommender System using TF-IDF vectorization and cosine similarity, achieving high relevance scores on test datasets.</li>
-              <li>Engineered a Face Recognition system using ArcFace embeddings stored and queried from Pinecone vector database — sub-100ms query time.</li>
-              <li>Designed and trained a Transformer-Based Music Generation Model combining Music21 for symbolic music representation and LSTM layers for sequence modeling.</li>
+              <li>Built a Movie Recommender System using TF-IDF vectorization and cosine similarity, achieving high
+                relevance scores on test datasets.</li>
+              <li>Engineered a Face Recognition system using ArcFace embeddings stored and queried from Pinecone vector
+                database — sub-100ms query time.</li>
+              <li>Designed and trained a Transformer-Based Music Generation Model combining Music21 for symbolic music
+                representation and LSTM layers for sequence modeling.</li>
               <li>Collaborated on model evaluation pipelines and documented findings for internal knowledge base.</li>
             </ul>
 
@@ -230,9 +302,11 @@
           </div>
 
           <!-- Internship 2 -->
-          <div class="card exp-card observe" style="transition-delay:0.15s">
-            <div class="card-corner tl"></div><div class="card-corner tr"></div>
-            <div class="card-corner bl"></div><div class="card-corner br"></div>
+          <div class="card exp-card observe" style="transition-delay:0.15s" >
+            <div class="card-corner tl"></div>
+            <div class="card-corner tr"></div>
+            <div class="card-corner bl"></div>
+            <div class="card-corner br"></div>
 
             <div class="exp-header">
               <div>
@@ -246,7 +320,8 @@
             </div>
 
             <p class="exp-description">
-              Focused on backend development using SQL and Python. Queried databases, automated tasks, and collaborated with the dev team to enhance functionality of web applications.
+              Focused on backend development using SQL and Python. Queried databases, automated tasks, and collaborated
+              with the dev team to enhance functionality of web applications.
             </p>
 
             <ul class="exp-achievements">
@@ -265,13 +340,15 @@
           </div>
 
           <!-- Volunteering -->
-          <div class="divider observe">
+          <div class="divider observe" id="volunteering">
             <span class="divider-text">VOLUNTEERING</span>
           </div>
 
           <div class="card exp-card observe" style="transition-delay:0.2s">
-            <div class="card-corner tl"></div><div class="card-corner tr"></div>
-            <div class="card-corner bl"></div><div class="card-corner br"></div>
+            <div class="card-corner tl"></div>
+            <div class="card-corner tr"></div>
+            <div class="card-corner bl"></div>
+            <div class="card-corner br"></div>
             <div class="exp-header">
               <div>
                 <div class="exp-role">Treasurer</div>
@@ -282,7 +359,9 @@
                 <div class="exp-type">VOLUNTEERING</div>
               </div>
             </div>
-            <p class="exp-description">Managed financial operations of the organization, ensuring funds are utilized effectively and transparently. Involved in budgeting, financial planning, and supporting various events and initiatives.</p>
+            <p class="exp-description">Managed financial operations of the organization, ensuring funds are utilized
+              effectively and transparently. Involved in budgeting, financial planning, and supporting various events
+              and initiatives.</p>
             <div class="exp-tags">
               <span class="tag">Financial Planning</span>
               <span class="tag">Budgeting</span>
@@ -291,8 +370,10 @@
           </div>
 
           <div class="card exp-card observe" style="transition-delay:0.25s">
-            <div class="card-corner tl"></div><div class="card-corner tr"></div>
-            <div class="card-corner bl"></div><div class="card-corner br"></div>
+            <div class="card-corner tl"></div>
+            <div class="card-corner tr"></div>
+            <div class="card-corner bl"></div>
+            <div class="card-corner br"></div>
             <div class="exp-header">
               <div>
                 <div class="exp-role">Community Manager</div>
@@ -303,7 +384,9 @@
                 <div class="exp-type">VOLUNTEERING</div>
               </div>
             </div>
-            <p class="exp-description">Fostered engagement within a community of tech enthusiasts. Organized events, managed social media channels, and implemented strategies to increase participation — leading to a more vibrant and interactive community.</p>
+            <p class="exp-description">Fostered engagement within a community of tech enthusiasts. Organized events,
+              managed social media channels, and implemented strategies to increase participation — leading to a more
+              vibrant and interactive community.</p>
             <div class="exp-tags">
               <span class="tag">Community Management</span>
               <span class="tag">Event Organizing</span>
@@ -312,22 +395,24 @@
           </div>
 
           <!-- Education -->
-          <div class="divider observe">
+          <div class="divider observe" id="education">
             <span class="divider-text">EDUCATION</span>
           </div>
 
           <div class="card observe" style="transition-delay:0.3s">
-            <div class="card-corner tl"></div><div class="card-corner tr"></div>
-            <div class="card-corner bl"></div><div class="card-corner br"></div>
+            <div class="card-corner tl"></div>
+            <div class="card-corner tr"></div>
+            <div class="card-corner bl"></div>
+            <div class="card-corner br"></div>
             <div class="edu-card">
               <div class="edu-year-block">
-                <div class="edu-year">2022<br/>—<br/>2026</div>
+                <div class="edu-year">2022<br />—<br />2026</div>
               </div>
               <div>
-                <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+                <div class="edu-degree">B.Tech - Computer Science & Engineering</div>
                 <div class="edu-institution">Manipal University Jaipur</div>
                 <p class="edu-desc">
-                  Final year student with focus areas in AI/ML, web development, and software engineering.
+                  Computer Science graduate with majors in AI/ML
                   Worked on multiple independent projects, internships, and community leadership throughout the degree.
                 </p>
                 <div class="exp-tags" style="margin-top:1rem;">
@@ -345,16 +430,62 @@
   </div>
 
   <footer>
-    <span class="footer-text">© 2025 CHAITANYA SEKRA</span>
+    <span class="footer-text">© 2026 CHAITANYA SEKRA</span>
     <div class="footer-links">
       <a href="https://github.com/chaitanyasekra" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">LinkedIn</a>
       <a href="mailto:chaitanyasekra123@gmail.com">Email</a>
       <a href="https://sekraog.netlify.app/" target="_blank">Music</a>
-      <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" target="_blank">Resume</a>
+      <a href="https://drive.google.com/file/d/1e_Ok6ujwLPKkJ2U9n-Qm2VttS7fYuqcE/view?usp=drive_link"
+        target="_blank">Resume</a>
     </div>
   </footer>
 
   <script src="script.js"></script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const navItems = document.querySelectorAll(".exp-nav-item");
+  const sections = document.querySelectorAll(
+    "#jobs, #internships, #volunteering, #education"
+  );
+
+  // Smooth scroll + active state on click
+  navItems.forEach(item => {
+    item.addEventListener("click", e => {
+      e.preventDefault();
+
+      const target = document.querySelector(item.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      navItems.forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+    });
+  });
+
+  // Auto highlight while scrolling
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      navItems.forEach(i => i.classList.remove("active"));
+
+      const active = document.querySelector(
+        `.exp-nav-item[href="#${entry.target.id}"]`
+      );
+
+      active?.classList.add("active");
+    });
+  }, {
+    threshold: 0.35,
+    rootMargin: "-80px 0px -50% 0px"
+  });
+
+  sections.forEach(section => observer.observe(section));
+});
+</script>
 </body>
+
 </html>

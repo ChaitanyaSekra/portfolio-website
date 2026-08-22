@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,6 +19,7 @@
       position: sticky;
       top: 100px;
     }
+
     .avatar-frame {
       position: relative;
       width: 100%;
@@ -25,6 +27,7 @@
       max-width: 320px;
       margin-bottom: 2rem;
     }
+
     .avatar-inner {
       width: 100%;
       height: 100%;
@@ -36,40 +39,58 @@
       font-family: var(--font-display);
       font-size: 5rem;
       color: var(--accent-cyan);
-      text-shadow: 0 0 40px rgba(0,245,255,0.5);
+      text-shadow: 0 0 40px rgba(0, 245, 255, 0.5);
       position: relative;
       overflow: hidden;
     }
+
     .avatar-inner::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(0,245,255,0.08), transparent 70%);
+      background: radial-gradient(circle at 50% 50%, rgba(0, 245, 255, 0.08), transparent 70%);
     }
+
     .avatar-scan {
       position: absolute;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
       opacity: 0.6;
       animation: scan 3s ease-in-out infinite;
     }
+
     @keyframes scan {
-      0% { top: -2px; opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.6; }
-      100% { top: 100%; opacity: 0; }
+      0% {
+        top: -2px;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.6;
+      }
+
+      90% {
+        opacity: 0.6;
+      }
+
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
     }
 
     .avatar-ring {
       position: absolute;
       inset: -12px;
-      border: 1px solid rgba(0,245,255,0.15);
+      border: 1px solid rgba(0, 245, 255, 0.15);
     }
+
     .avatar-ring-2 {
       position: absolute;
       inset: -24px;
-      border: 1px solid rgba(0,245,255,0.07);
+      border: 1px solid rgba(0, 245, 255, 0.07);
     }
 
     .info-list {
@@ -77,19 +98,28 @@
       flex-direction: column;
       gap: 0.8rem;
     }
+
     .info-item {
       display: flex;
       gap: 1rem;
       font-family: var(--font-mono);
       font-size: 0.75rem;
     }
+
     .info-key {
       color: var(--text-muted);
       letter-spacing: 0.1em;
       min-width: 80px;
     }
-    .info-val { color: var(--text-secondary); }
-    .info-val a { color: var(--accent-cyan); text-decoration: none; }
+
+    .info-val {
+      color: var(--text-secondary);
+    }
+
+    .info-val a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
 
     /* Content panel */
     .about-text h2 {
@@ -99,6 +129,7 @@
       margin-bottom: 1.5rem;
       letter-spacing: 0.1em;
     }
+
     .about-text p {
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
@@ -110,29 +141,35 @@
       position: relative;
       margin-top: 3rem;
     }
+
     .timeline::before {
       content: '';
       position: absolute;
       left: 0;
-      top: 0; bottom: 0;
+      top: 0;
+      bottom: 0;
       width: 1px;
       background: linear-gradient(180deg, var(--accent-cyan), transparent);
       opacity: 0.3;
     }
+
     .timeline-item {
       padding: 0 0 2.5rem 2rem;
       position: relative;
     }
+
     .timeline-item::before {
       content: '';
       position: absolute;
       left: -4px;
       top: 6px;
-      width: 9px; height: 9px;
+      width: 9px;
+      height: 9px;
       background: var(--accent-cyan);
       border-radius: 50%;
       box-shadow: 0 0 10px var(--accent-cyan);
     }
+
     .timeline-date {
       font-family: var(--font-mono);
       font-size: 0.68rem;
@@ -141,6 +178,7 @@
       margin-bottom: 0.4rem;
       opacity: 0.7;
     }
+
     .timeline-title {
       font-family: var(--font-display);
       font-size: 0.9rem;
@@ -148,12 +186,14 @@
       margin-bottom: 0.3rem;
       letter-spacing: 0.05em;
     }
+
     .timeline-sub {
       font-family: var(--font-mono);
       font-size: 0.75rem;
       color: var(--text-muted);
       margin-bottom: 0.6rem;
     }
+
     .timeline-desc {
       font-size: 0.95rem;
       color: var(--text-secondary);
@@ -166,27 +206,40 @@
       gap: 1rem;
       margin-top: 1.5rem;
     }
+
     .interest-item {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       padding: 0.75rem 1rem;
       border: 1px solid var(--border);
-      background: rgba(0,245,255,0.02);
+      background: rgba(0, 245, 255, 0.02);
       font-family: var(--font-mono);
       font-size: 0.75rem;
       color: var(--text-secondary);
       letter-spacing: 0.05em;
     }
-    .interest-icon { font-size: 1.2rem; }
+
+    .interest-icon {
+      font-size: 1.2rem;
+    }
 
     @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .avatar-panel { position: static; }
-      .avatar-frame { max-width: 200px; }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .avatar-panel {
+        position: static;
+      }
+
+      .avatar-frame {
+        max-width: 200px;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
@@ -233,6 +286,10 @@
               <span class="info-val">Chaitanya Sekra</span>
             </div>
             <div class="info-item">
+              <span class="info-key">WORKING AT</span>
+              <span class="info-val">Accenture</span>
+            </div>
+            <div class="info-item">
               <span class="info-key">DEGREE</span>
               <span class="info-val">B.Tech Computer Science</span>
             </div>
@@ -250,7 +307,8 @@
             </div>
             <div class="info-item">
               <span class="info-key">GITHUB</span>
-              <span class="info-val"><a href="https://github.com/chaitanyasekra" target="_blank">@chaitanyasekra</a></span>
+              <span class="info-val"><a href="https://github.com/chaitanyasekra"
+                  target="_blank">@chaitanyasekra</a></span>
             </div>
           </div>
         </div>
@@ -259,41 +317,53 @@
           <div class="observe">
             <h2>// sys.bio</h2>
             <p>
-              I'm a final year Computer Science student with a genuine obsession for building things that think.
-              My work sits at the intersection of AI/ML research and practical engineering — whether that's
-              training transformer models, building face recognition systems, or architecting full-stack web apps.
+              I'm a Computer Science graduate with majors in <b>Artificial intelligence and Machine Learning</b>. As of
+              now I am working as an <b>Associate Software Engineer</b> at <b>Accenture</b>, where I build software that
+              sits at the intersection of AI and practical engineering. From Python automation and SQL to scalable
+              applications, I enjoy turning complex ideas into reliable products. Because apparently making computers
+              behave is a full-time job now.
             </p>
             <p>
-              I've had the chance to intern at two companies, picking up real-world experience in Python automation,
-              SQL, and cutting-edge AI projects. I don't just follow tutorials — I build, break, and rebuild until
-              I understand something deeply.
+              My interest has always been in building things that think. I've worked on transformer-based NLP, face
+              recognition systems, emotion detection, and full-stack web applications, with a focus on understanding the
+              fundamentals rather than copying solutions.
             </p>
             <p>
-              Currently working on projects that push what's possible with NLP, emotion detection, and generative AI.
-              Always looking for problems worth solving.
+              Today, I'm focused on growing as an engineer while continuing to explore AI, generative models, and
+              intelligent systems that solve real-world problems.
             </p>
           </div>
 
           <div class="observe" style="transition-delay: 0.2s;">
             <h2 style="margin-top: 2.5rem;">// timeline</h2>
             <div class="timeline">
+              
               <div class="timeline-item">
-                <div class="timeline-date">2025 — PRESENT</div>
-                <div class="timeline-title">Final Year Projects</div>
-                <div class="timeline-sub">Academic / Personal</div>
-                <div class="timeline-desc">Building major project: Emotion-Aware Music Recommender.</div>
+                <div class="timeline-date">AUG 2025 - PRESENT</div>
+                <div class="timeline-title">Associate Software Engineer</div>
+                <div class="timeline-sub">Accenture</div>
+                <div class="timeline-desc">Still figuring out, let me work a bit longer.</div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">JAN - JUNE 2025</div>
+                <div class="timeline-title">Final Year Project</div>
+                <div class="timeline-sub">Academic</div>
+                <div class="timeline-desc">Built major project: Emotion-Aware Music Recommender.</div>
               </div>
               <div class="timeline-item">
-                <div class="timeline-date">MAY — JULY 2025</div>
+                <div class="timeline-date">MAY - JULY 2025</div>
                 <div class="timeline-title">AI/ML Intern</div>
                 <div class="timeline-sub">Data Ingenious</div>
-                <div class="timeline-desc">Built a Movie Recommender (TF-IDF + cosine similarity), Face Recognition system (ArcFace + Pinecone), and a Transformer-Based Music Generation Model.</div>
+                <div class="timeline-desc">Built a Movie Recommender (TF-IDF + cosine similarity), Face Recognition
+                  system (ArcFace + Pinecone), and a Transformer-Based Music Generation Model.</div>
               </div>
               <div class="timeline-item">
-                <div class="timeline-date">EARLIER</div>
+                <div class="timeline-date">MAY - JUNE 2024</div>
                 <div class="timeline-title">Web Developer Intern</div>
                 <div class="timeline-sub">Dream Soft For You</div>
-                <div class="timeline-desc">Python automation, SQL, and web development — foundational work that sparked the pivot into AI/ML.</div>
+                <div class="timeline-desc">Python automation, SQL, and web development — foundational work that sparked
+                  the pivot into AI/ML.</div>
               </div>
             </div>
           </div>
@@ -314,16 +384,18 @@
   </div>
 
   <footer>
-    <span class="footer-text">© 2025 CHAITANYA SEKRA</span>
+    <span class="footer-text">© 2026 CHAITANYA SEKRA</span>
     <div class="footer-links">
       <a href="https://github.com/chaitanyasekra" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/chaitanya-sekra" target="_blank">LinkedIn</a>
       <a href="mailto:chaitanyasekra123@gmail.com">Email</a>
       <a href="https://sekraog.netlify.app/" target="_blank">Music</a>
-      <a href="https://drive.google.com/file/d/1V7AF59ojox-7mIEoxc_pA4QU6XhbUjfm/view?usp=sharing" target="_blank">Resume</a>
+      <a href="https://drive.google.com/file/d/1e_Ok6ujwLPKkJ2U9n-Qm2VttS7fYuqcE/view?usp=drive_link"
+        target="_blank">Resume</a>
     </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
+
 </html>
